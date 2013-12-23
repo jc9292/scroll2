@@ -1,9 +1,21 @@
+<!DOCTYPE html>
 <html>
 <head>
-<script src="http://cubiq.org/dropbox/iscroll4/src/iscroll.js"></script>
-
-<style>
-body,ul,li {
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title> - jsFiddle demo by manseuk</title>
+  
+  <script type='text/javascript' src='http://code.jquery.com/jquery-1.7.1.js'></script>
+  <link rel="stylesheet" type="text/css" href="/css/normalize.css">
+  
+  
+  <link rel="stylesheet" type="text/css" href="/css/result-light.css">
+  
+    
+      <script type='text/javascript' src="http://cubiq.org/dropbox/iscroll4/src/iscroll.js"></script>
+    
+  
+  <style type='text/css'>
+    body,ul,li {
     padding:0;
     margin:0;
     border:0;
@@ -214,10 +226,67 @@ ul#indicator1, ul#indicator2, ul#indicator3 {
 #indicator1 > li:last-child, #indicator2 > li:last-child, #indicator3 > li:last-child {
     margin:0;
 }
-</style>
+
+
+  </style>
+  
+
+
+<script type='text/javascript'>//<![CDATA[ 
+
+var myScroll;
+var myScroll1;
+var myScroll2;
+var myScroll3;
+
+function loaded() {
+
+    myScroll = new iScroll('wrapper');
+    
+    myScroll1 = new iScroll('wrapper1', {
+        snap: true,
+        momentum: false,
+        hScrollbar: false,
+        onScrollEnd: function () {
+            document.querySelector('#indicator1 > li.active').className = '';
+            document.querySelector('#indicator1 > li:nth-child(' + (this.currPageX+1) + ')').className = 'active';
+        }
+     });
+     
+     myScroll2 = new iScroll('wrapper2', {
+        snap: true,
+        momentum: false,
+        hScrollbar: false,
+        onScrollEnd: function () {
+            document.querySelector('#indicator2 > li.active').className = '';
+            document.querySelector('#indicator2 > li:nth-child(' + (this.currPageX+1) + ')').className = 'active';
+        }
+     });
+     
+     myScroll3 = new iScroll('wrapper3', {
+        snap: true,
+        momentum: false,
+        hScrollbar: false,
+        onScrollEnd: function () {
+            document.querySelector('#indicator3 > li.active').className = '';
+            document.querySelector('#indicator3 > li:nth-child(' + (this.currPageX+1) + ')').className = 'active';
+        }
+     });
+
+}
+
+document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+document.addEventListener('DOMContentLoaded', function () { setTimeout(loaded, 200); }, false);
+
+
+//]]>  
+
+</script>
+
+
 </head>
 <body>
-<div id="header"><a href="http://cubiq.org/iscroll">iScroll</a></div>
+  <div id="header"><a href="http://cubiq.org/iscroll">iScroll</a></div>
 <div id="wrapper">
     <div id="scroller">
     
@@ -299,50 +368,8 @@ ul#indicator1, ul#indicator2, ul#indicator3 {
     </div>
 </div>
 <div id="footer"></div>
-<script>
-var myScroll;
-var myScroll1;
-var myScroll2;
-var myScroll3;
-
-function loaded() {
-
-    myScroll = new iScroll('wrapper');
-    
-    myScroll1 = new iScroll('wrapper1', {
-        snap: true,
-        momentum: false,
-        hScrollbar: false,
-        onScrollEnd: function () {
-            document.querySelector('#indicator1 > li.active').className = '';
-            document.querySelector('#indicator1 > li:nth-child(' + (this.currPageX+1) + ')').className = 'active';
-        }
-     });
-     
-     myScroll2 = new iScroll('wrapper2', {
-        snap: true,
-        momentum: false,
-        hScrollbar: false,
-        onScrollEnd: function () {
-            document.querySelector('#indicator2 > li.active').className = '';
-            document.querySelector('#indicator2 > li:nth-child(' + (this.currPageX+1) + ')').className = 'active';
-        }
-     });
-     
-     myScroll3 = new iScroll('wrapper3', {
-        snap: true,
-        momentum: false,
-        hScrollbar: false,
-        onScrollEnd: function () {
-            document.querySelector('#indicator3 > li.active').className = '';
-            document.querySelector('#indicator3 > li:nth-child(' + (this.currPageX+1) + ')').className = 'active';
-        }
-     });
-
-}
-
-document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
-document.addEventListener('DOMContentLoaded', function () { setTimeout(loaded, 200); }, false);
-</script>
+  
 </body>
+
+
 </html>
